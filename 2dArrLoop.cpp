@@ -13,14 +13,39 @@ int main()
         {21, 22, 23, 24, 25},
     };
     int sum = 0;
-    for (size_t i = 0; i < arrL; i++)
+    int *p_twod = &twod[0][0];
+    int i = arrL * arrL;
+    int n = 1;
+    while (n < i)
     {
-        bool regRow = (i == 0 || i == (arrL - 1));
-        for (size_t j = 0; j < (regRow ? arrL : 2); j++)
+        cout << "n = " << n;
+        bool firstSpecialBlock = (n == 1);
+        bool secondSpecialBlock = (n == (i - arrL));
+        if (firstSpecialBlock || secondSpecialBlock)
         {
-            regRow ? (sum += twod[i][j]) : (sum += ((j == 0) ? (twod[i][0]) : (twod[i][arrL - 1])));
+            for (size_t j = 0; j < arrL + 1; j++)
+            {
+                sum += *(p_twod + n + j - 1);
+            }
         }
+
+        firstSpecialBlock && (n += (arrL + arrL - 1));
+        if (secondSpecialBlock && !firstSpecialBlock)
+        {
+            cout << " sum = " << sum << endl;
+
+            break;
+        }
+
+        if (!firstSpecialBlock && !secondSpecialBlock)
+        {
+            sum += (*(p_twod + n - 1) + *(p_twod + n));
+            n += (arrL);
+        }
+
+        cout << " sum = " << sum << endl;
     }
+
     cout << sum << endl;
     return 0;
 }
