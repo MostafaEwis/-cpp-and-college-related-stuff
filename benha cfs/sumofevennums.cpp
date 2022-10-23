@@ -6,7 +6,7 @@ int main(int argc, char const *argv[])
 {
     long long int n = 0;
     cin >> n;
-    int e_num;
+    long long int e_num;
     if (n % 2 == 0)
     {
         e_num = n / 2;
