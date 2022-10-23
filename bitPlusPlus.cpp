@@ -20,9 +20,9 @@ int main()
 {
     vector<string> c = takeMultipleLines();
     int x = 0;
-    for (size_t i = 1; i < int(c[0][0]) - 48 + 1; i++)
+    for (size_t i = 1; i < stoi(c[0]) + 1; i++)
     {
-        if (c[i][0] == 'x' || c[i][0] == 'X')
+        if (c[i][0] == 'X')
         {
             (c[i][1] == '-') ? (x--) : (x++);
         }
@@ -34,7 +34,8 @@ int main()
         {
             x++;
         }
-        cout << x << endl;
     }
+    cout << x << endl;
+
     return 0;
 }
